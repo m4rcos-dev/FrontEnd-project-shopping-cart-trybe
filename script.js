@@ -39,3 +39,4 @@ const createCartItemElement = ({ sku, name, salePrice }) => {
 };
 
 window.onload = () => { };
+// iniciando projeto
