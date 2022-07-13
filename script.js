@@ -30,15 +30,16 @@ const createProductItemElement = ({ sku, name, image }) => {
 
 const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').innerText;
 
-// const cartItemClickListener = (event) => {
-
-// };
+const cartItemClickListener = (event) => {
+  const itemCartRemove = event.path[0];
+  itemCartRemove.remove();
+};
 
 const createCartItemElement = ({ sku, name, salePrice }) => {
   const li = document.createElement('li');
   li.className = 'cart__item';
   li.innerText = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}`;
-  // li.addEventListener('click', cartItemClickListener);
+  li.addEventListener('click', cartItemClickListener);
   return li;
 };
 
@@ -73,8 +74,8 @@ const addItemCartHtml = async (itemID) => {
 const buttonItemAdd = document.querySelector('.container');
 buttonItemAdd.addEventListener('click', function (e) {
   if (e.target.classList.contains('item__add')) {
-   const idItem = getSkuFromProductItem(e.target.parentNode);
-   addItemCartHtml(idItem);
+    const idItem = getSkuFromProductItem(e.target.parentNode);
+    addItemCartHtml(idItem);
   }
 });
 
