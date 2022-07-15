@@ -102,6 +102,10 @@ body {
   box-sizing: border-box;
 }
 
+.item:hover {
+  box-shadow: 0 0 1em rgb(156, 157, 160);
+}
+
 .item .item__sku {
   display: none;
 }
@@ -138,6 +142,12 @@ body {
 .cart .cart__items {
   height: 500px;
   overflow-y: scroll;
+}
+
+.cart__item {
+  border: 2px solid rgb(234, 234, 233);
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
 .empty-cart {
