@@ -48,7 +48,6 @@ const subtractTotalCart = (event) => {
   const itemCartRemove = event.path[0];
   const priceCapture = itemCartRemove.innerText.split(' ').pop().split('$').pop();
   const priceConvertion = parseFloat(selectTotalPrice().innerText) - parseFloat(priceCapture);
-  // const priceTwoDecimals = priceConvertion.toFixed(2);
   const priceRound = round(priceConvertion, 2);
   selectTotalPrice().innerText = priceRound;
   localStorage.setItem('total', priceRound);
@@ -84,7 +83,21 @@ const createCartItemElement = ({ sku, name, salePrice }) => {
   return li;
 };
 
+const messageCallingApi = () => {
+  const cartContainer = document.querySelector('.cart');
+  const messageElement = document.createElement('h3');
+  messageElement.className = 'loading';
+  messageElement.innerText = 'carregando...';
+  cartContainer.appendChild(messageElement);
+};
+
+const removeMessageCallingApi = () => {
+  const messageContainer = document.querySelector('.loading');
+  messageContainer.remove();
+};
+
 const createIntensHtml = async () => {
+  messageCallingApi();
   const itemsContainer = document.querySelector('.items');
   const data = await fetchProducts('computador');
   const { results } = data;
@@ -96,6 +109,7 @@ const createIntensHtml = async () => {
     };
     itemsContainer.appendChild(createProductItemElement(item));
   });
+  removeMessageCallingApi();
 };
 
 const addItemCartHtml = async (itemID) => {
@@ -143,8 +157,10 @@ const createSumElement = () => {
 const createItemCart = async (event) => {
   if (event.target.classList.contains('item__add')) {
     const idItem = getSkuFromProductItem(event.target.parentNode);
+    messageCallingApi();
     await addItemCartHtml(idItem);
     await addTotalCart(idItem);
+    removeMessageCallingApi();
     if ('cartItems' in localStorage) {
       return saveCartItems(`${getSavedCartItems('cartItems')},${idItem}`);
     }
