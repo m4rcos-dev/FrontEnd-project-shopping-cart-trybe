@@ -143,6 +143,22 @@ const createIntensHtml = async (product) => {
   removeMessageCallingApi();
 };
 
+const defaultIntensHtml = async () => {
+  messageCallingApi();
+  const itemsContainer = document.querySelector('.items');
+  const data = await fetchProducts('info');
+  const { results } = data;
+  await results.forEach(({ id, title, thumbnail }) => {
+    const item = {
+      sku: id,
+      name: title,
+      image: thumbnail,
+    };
+    itemsContainer.appendChild(createProductItemElement(item));
+  });
+  removeMessageCallingApi();
+};
+
 const addItemCartHtml = async (itemID) => {
   const cartContainer = document.querySelector('.cart__items');
   const data = await fetchItem(itemID);
@@ -234,7 +250,7 @@ const buttonClear = document.querySelector('.empty-cart');
 buttonClear.addEventListener('click', () => clearCart());
 
 window.onload = async () => {
-  // await createIntensHtml();
+  await defaultIntensHtml();
   await handleLocalStorage();
   await createSumElement();
 };

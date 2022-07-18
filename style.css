@@ -31,6 +31,7 @@ body {
 .fa-searchengin {
   color: white;
   cursor: pointer;
+  margin-left: 5px;
 }
 
 .search_input {
@@ -117,6 +118,8 @@ body {
   border: 2px solid rgb(234, 234, 233);
   border-radius: 5px;
   box-sizing: border-box;
+  transition: all .5s;
+  border: 10px solid transparent;
 }
 
 .item:hover {
