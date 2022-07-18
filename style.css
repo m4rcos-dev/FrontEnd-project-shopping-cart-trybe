@@ -131,6 +131,11 @@ body {
   color: white;
 }
 
+.item_add:hover {
+  background-color: rgb(10, 118, 79);
+  color: black;
+}
+
 .cart {
   display: flex;
   flex-basis: 32%;

@@ -96,10 +96,34 @@ const removeMessageCallingApi = () => {
   messageContainer.remove();
 };
 
-const createIntensHtml = async () => {
+const searchInput = document.querySelector('.search_input');
+const buttonSearch = document.querySelector('.button_search');
+const searchProducts = () => searchInput.value;
+
+const cleanPage = () => {
+  const allItemsContainer = document.querySelectorAll('.item');
+  allItemsContainer.forEach((e) =>{
+    e.remove();
+  })
+};
+
+searchInput.addEventListener('keypress', function (event) {
+  if (event.which === 13) {
+    cleanPage();
+    createIntensHtml(searchProducts());
+  }
+});
+
+buttonSearch.addEventListener('click', function() {
+  cleanPage();
+  createIntensHtml(searchProducts());
+})
+
+
+const createIntensHtml = async (product) => {
   messageCallingApi();
   const itemsContainer = document.querySelector('.items');
-  const data = await fetchProducts('computador');
+  const data = await fetchProducts(product);
   const { results } = data;
   await results.forEach(({ id, title, thumbnail }) => {
     const item = {
@@ -203,7 +227,7 @@ const buttonClear = document.querySelector('.empty-cart');
 buttonClear.addEventListener('click', () => clearCart());
 
 window.onload = async () => {
-  await createIntensHtml();
+  // await createIntensHtml();
   await handleLocalStorage();
   await createSumElement();
 };
