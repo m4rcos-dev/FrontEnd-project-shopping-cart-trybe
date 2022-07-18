@@ -28,6 +28,23 @@ body {
   padding-left: 30px;
 }
 
+.fa-searchengin {
+  color: white;
+  cursor: pointer;
+}
+
+.search_input {
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 20%);
+  height: 39px;
+  width: 500px;
+  padding: 10px;
+  border-radius: 2px;
+  color: #333;
+  font-size: 16px;
+  font-family: inherit;
+  margin-left: 10px
+}
+
 .container-cartTitle {
   position: relative;
   display: flex;

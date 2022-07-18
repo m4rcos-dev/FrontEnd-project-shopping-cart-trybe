@@ -97,7 +97,7 @@ const removeMessageCallingApi = () => {
 };
 
 const searchInput = document.querySelector('.search_input');
-const buttonSearch = document.querySelector('.button_search');
+const buttonSearch = document.querySelector('.fa-searchengin');
 const searchProducts = () => searchInput.value;
 
 const cleanPage = () => {
@@ -119,6 +119,13 @@ buttonSearch.addEventListener('click', function() {
   createIntensHtml(searchProducts());
 })
 
+buttonSearch.addEventListener('mouseover', function(){
+  buttonSearch.classList.add('fa-beat');
+})
+
+buttonSearch.addEventListener('mouseout', function(){
+  buttonSearch.classList.remove('fa-beat');
+})
 
 const createIntensHtml = async (product) => {
   messageCallingApi();
