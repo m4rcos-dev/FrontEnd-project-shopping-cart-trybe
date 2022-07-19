@@ -60,7 +60,9 @@ const handleAllLocalStorage = (event) => {
 
 const removeItemCart = (event) => {
   const itemCartRemove = event.path[0];
+  const divRemove = itemCartRemove.parentNode;
   itemCartRemove.remove();
+  divRemove.remove();
   if (getSavedCartItems('cartItems').split(',').length === 1) {
     return handleAllLocalStorage(event);
   }
@@ -75,12 +77,33 @@ const cartItemClickListener = (event) => {
   removeItemCart(event);
 };
 
-const createCartItemElement = ({ sku, name, salePrice }) => {
+const itemCartOver = (event) => {
+  const divCartContainer = event.path[0];
+  const remover = document.createElement('i');
+  remover.className = 'fa-solid fa-trash-can';
+  divCartContainer.appendChild(remover);
+}
+
+const removeItemCartOver = () => {
+  const textRemover = document.querySelector('.fa-trash-can');
+  textRemover.remove();
+}
+
+const createCartItemElement = ({ sku, name, salePrice, img }) => {
+  const div = document.createElement('div');
+  div.className = 'cart_item_container';
+  const image = document.createElement('img');
+  image.className = 'cart_item_img';
+  image.setAttribute('src', img);
   const li = document.createElement('li');
   li.className = 'cart__item';
-  li.innerText = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}`;
+  li.innerText = `SKU: ${sku} | NAME: ${name} | PRICE: R$${salePrice}`;
   li.addEventListener('click', cartItemClickListener);
-  return li;
+  div.appendChild(image);
+  div.appendChild(li);
+  div.addEventListener('mouseover', itemCartOver);
+  div.addEventListener('mouseout', removeItemCartOver);
+  return div;
 };
 
 const messageCallingApi = () => {
@@ -91,15 +114,70 @@ const messageCallingApi = () => {
   cartContainer.appendChild(messageElement);
 };
 
+const messageLoadPage = () => {
+  const containerTitle = document.querySelector('.container-title')
+  const messageElement = document.createElement('h3');
+  messageElement.className = 'loading';
+  messageElement.innerText = 'carregando...'
+  containerTitle.appendChild(messageElement);
+}
+
 const removeMessageCallingApi = () => {
   const messageContainer = document.querySelector('.loading');
   messageContainer.remove();
 };
 
-const createIntensHtml = async () => {
-  messageCallingApi();
+const searchInput = document.querySelector('.search_input');
+const buttonSearch = document.querySelector('.fa-searchengin');
+const searchProducts = () => searchInput.value;
+
+const cleanPage = () => {
+  const allItemsContainer = document.querySelectorAll('.item');
+  allItemsContainer.forEach((e) => {
+    e.remove();
+  })
+};
+
+searchInput.addEventListener('keypress', function (event) {
+  if (event.which === 13) {
+    cleanPage();
+    createIntensHtml(searchProducts());
+  }
+});
+
+buttonSearch.addEventListener('click', function () {
+  cleanPage();
+  createIntensHtml(searchProducts());
+})
+
+buttonSearch.addEventListener('mouseover', function () {
+  buttonSearch.classList.add('fa-beat');
+})
+
+buttonSearch.addEventListener('mouseout', function () {
+  buttonSearch.classList.remove('fa-beat');
+})
+
+const createIntensHtml = async (product) => {
+  messageLoadPage();
   const itemsContainer = document.querySelector('.items');
-  const data = await fetchProducts('computador');
+  const data = await fetchProducts(product);
+  const { results } = data;
+  await results.forEach(({ id, title, thumbnail }) => {
+    const item = {
+      sku: id,
+      name: title,
+      image: thumbnail,
+    };
+    itemsContainer.appendChild(createProductItemElement(item));
+  });
+  removeMessageCallingApi();
+};
+
+const defaultIntensHtml = async () => {
+  messageLoadPage();
+  const itemsContainer = document.querySelector('.items');
+  const data = await fetchProducts('informática');
   const { results } = data;
   await results.forEach(({ id, title, thumbnail }) => {
     const item = {
@@ -118,10 +196,12 @@ const addItemCartHtml = async (itemID) => {
   const { id } = data;
   const { title } = data;
   const { price } = data;
+  const { thumbnail } = data;
   const item = {
     sku: id,
     name: title,
     salePrice: price,
+    img: thumbnail,
   };
   cartContainer.appendChild(createCartItemElement(item));
 };
@@ -147,10 +227,17 @@ const loadTotalStorage = () => {
 };
 
 const createSumElement = () => {
+  const divTotal = document.createElement('div');
+  divTotal.className = 'div-total';
+  const h3TitleTotal = document.createElement('h3');
+  h3TitleTotal.className = 'title-total';
+  h3TitleTotal.innerText = 'Total Carrinho: R$'
   const cartContainer = document.querySelector('.cart');
   const elementSum = document.createElement('h3');
   elementSum.className = 'total-price';
-  cartContainer.appendChild(elementSum);
+  divTotal.appendChild(h3TitleTotal);
+  divTotal.appendChild(elementSum);
+  cartContainer.appendChild(divTotal);
   loadTotalStorage();
 };
 
@@ -203,7 +290,7 @@ const buttonClear = document.querySelector('.empty-cart');
 buttonClear.addEventListener('click', () => clearCart());
 
 window.onload = async () => {
-  await createIntensHtml();
+  await defaultIntensHtml();
   await handleLocalStorage();
   await createSumElement();
 };
