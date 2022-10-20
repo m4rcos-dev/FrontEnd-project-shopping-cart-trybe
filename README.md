@@ -4,7 +4,7 @@
 
 ![flag languages](https://img.shields.io/badge/Languages-JavaScript%20-yellow)
 ![flag style](https://img.shields.io/badge/Style-CSS3-9cf)
-![flag tests](https://img.shields.io/badge/Tests-Jest%20%7C%20RTL-green)
+![flag tests](https://img.shields.io/badge/Tests-Jest-green)
 ![flag API](https://img.shields.io/badge/API-Public-orange)
 
 <a href='https://trybe-shopping-cart.netlify.app/'><button>Project running</button></a>
