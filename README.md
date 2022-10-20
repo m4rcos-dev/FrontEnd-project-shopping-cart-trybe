@@ -1,16 +1,30 @@
-# 🚧 README em construção 🚧
+<h1 align="center">🎉 Welcome to my shopping cart repository </h1>
 
-<!-- Olá, Tryber!
+![shopping-cart gif](https://user-images.githubusercontent.com/104791582/197052715-bef0000c-9962-49d2-a6ba-1c52d97752f2.gif)
 
-Esse é apenas um arquivo inicial para o README do seu projeto.
+![flag languages](https://img.shields.io/badge/Languages-JavaScript%20-yellow)
+![flag style](https://img.shields.io/badge/Style-CSS3-9cf)
+![flag tests](https://img.shields.io/badge/Tests-Jest%20%7C%20RTL-green)
+![flag API](https://img.shields.io/badge/API-Public-orange)
 
-É essencial que você preencha esse documento por conta própria, ok?
+<a href='https://trybe-shopping-cart.netlify.app/'><button>Project running</button></a>
 
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
+<p>Project developed during the front-end module of the Trybe full-stack web development course.</p>
+<p>A fully dynamic shopping cart has been developed! :shopping_cart:</p>
+<p>Data was consumed directly from an API! :star_struck:</p>
+<p>An API is a point of contact on the internet with a certain service and in this project the Mercado Livre API was used to search for products for sale. :label:</p>
+<p>In this project, test-oriented development, the famous TDD, was put into practice, which helps to ensure quality code, understanding the use cases of your application and ensuring that it is working correctly! :rocket:</p>
 
-⚠️ IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
+## 🔨 Project features
 
--->
+<ul>
+<li>Search bar</li>
+<li>Loading with error handling in API response</li>
+<li>Removing products from cart</li>
+<li>Price update</li>
+<li>TDD (Test Driven Development)</li>
+</ul>
+
+## 🧔 Author
+
+<div class="badge-base LI-profile-badge" data-locale="pt_BR" data-size="medium" data-theme="dark" data-type="VERTICAL" data-vanity="dev-marcospaulo" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://br.linkedin.com/in/dev-marcospaulo?trk=profile-badge">Marcos Paulo Pereira</a></div>
