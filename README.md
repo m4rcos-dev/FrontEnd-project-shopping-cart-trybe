@@ -1,3 +1,5 @@
+#### EN - English [(Versão em Português Brasil aqui)](https://github.com/m4rcos-dev/project-shopping-cart-trybe/blob/main/README_pt-br.md)
+
 <h1 align="center">🎉 Welcome to my shopping cart repository </h1>
 
 ![shopping-cart gif](https://user-images.githubusercontent.com/104791582/197052715-bef0000c-9962-49d2-a6ba-1c52d97752f2.gif)
