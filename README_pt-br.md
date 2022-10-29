@@ -26,6 +26,31 @@ Neste projeto, foi colocado em prática o desenvolvimento orientado a testes, o 
 <li>TDD (Test Driven Development), desenvolvimento orientado a testes</li>
 </ul>
 
+## 📥 Instalando Dependências
+
+```bash
+cd src/
+npm install
+``` 
+
+## ▶️ Executando aplicação
+
+<ol>
+<li>É preciso emular um servidor local para subir aplicação, recomenda-se usar o <a href='https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer'><button>Live Server</button></a></li>
+<li>Com o servidor online basta subir o arquivos index.html</li>
+</ol>
+
+## 🧪 Executando Testes
+
+>Terminal
+ ```
+ npm test
+  ```
+>Modo Gráfico
+ ```
+ npm run cypress:open
+  ```
+
 ## 🧔 Autor
 
 <div class="badge-base LI-profile-badge" data-locale="pt_BR" data-size="medium" data-theme="dark" data-type="VERTICAL" data-vanity="dev-marcospaulo" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://br.linkedin.com/in/dev-marcospaulo?trk=profile-badge">Marcos Paulo Pereira</a></div>
