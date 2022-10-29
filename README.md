@@ -27,6 +27,13 @@
 <li>TDD (Test Driven Development)</li>
 </ul>
 
+## ▶️ Running application
+
+<ol>
+<li>It is necessary to emulate a local server to upload the application, it is recommended to use the <a href='https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer'><button>Live Server</button></a></li>
+<li>With the online server, just upload the index.html file</li>
+</ol>
+
 ## 🧔 Author
 
 <div class="badge-base LI-profile-badge" data-locale="pt_BR" data-size="medium" data-theme="dark" data-type="VERTICAL" data-vanity="dev-marcospaulo" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://br.linkedin.com/in/dev-marcospaulo?trk=profile-badge">Marcos Paulo Pereira</a></div>
