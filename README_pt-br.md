@@ -29,7 +29,6 @@ Neste projeto, foi colocado em prática o desenvolvimento orientado a testes, o 
 ## 📥 Instalando Dependências
 
 ```bash
-cd src/
 npm install
 ``` 
 
